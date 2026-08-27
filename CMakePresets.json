@@ -1,0 +1,58 @@
+{
+  "version": 3,
+  "configurePresets": [
+    {
+      "name": "Qt",
+      "hidden": true,
+      "environment": {
+        "QTDIR": "D:/Qt/6.11.1/msvc2022_64"
+      },
+      "cacheVariables": {
+        "CMAKE_PREFIX_PATH": "$env{QTDIR}",
+        "QT_STATIC": "OFF"
+      }
+    },
+    {
+      "name": "msvc",
+      "displayName": "MSVC x64 (Qt from QTDIR)",
+      "inherits": "Qt",
+      "generator": "Visual Studio 18 2026",
+      "architecture": "x64",
+      "binaryDir": "${sourceDir}/out/build/${presetName}",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Windows"
+      }
+    },
+    {
+      "hidden": true,
+      "name": "Qt",
+      "cacheVariables": {
+        "CMAKE_PREFIX_PATH": "$env{QTDIR}"
+      },
+      "vendor": {
+        "qt-project.org/Qt": {
+          "checksum": "wVa86FgEkvdCTVp1/nxvrkaemJc="
+        }
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "msvc-release",
+      "configurePreset": "msvc",
+      "configuration": "Release"
+    },
+    {
+      "name": "msvc-debug",
+      "configurePreset": "msvc",
+      "configuration": "Debug"
+    }
+  ],
+  "vendor": {
+    "qt-project.org/Presets": {
+      "checksum": "otMPLjlHizOJtARlwFjH79X6igg="
+    }
+  }
+}
